@@ -1,0 +1,55 @@
+import java.util.Stack;
+
+class Balancing
+{
+    public static void main(String[] args) 
+    {
+        System.out.println("Enter the String");
+        String str="[{()}]";
+        if(isBracketBalance(str))
+        {
+            System.out.println("Balanced");
+        }else {
+            System.out.println("Not Balanced");
+        }
+    }
+    static boolean isBracketBalance(String str)
+    {
+        Stack<Character> stack=new Stack<Character>();
+        for (int i = 0; i < str.length(); i++) 
+        {
+            char ch=str.charAt(i);
+            if(ch=='[' || ch=='{' || ch=='(')
+            {
+                stack.push(ch);
+                continue;
+            }
+            if(stack.isEmpty())
+            {
+                return false;
+            }
+            char check;
+            switch(ch)
+            {                
+                case ']':
+                check=stack.pop();
+                if(check=='}' || check==')')
+                return false;
+                break;
+
+                case '}':
+                check=stack.pop();
+                if(check==']' || check==')')
+                return false;
+                break;
+
+                case ')':
+                check=stack.pop();
+                if(check==']' || check=='}')
+                return false;
+                break;
+            }
+        }
+        return(stack.isEmpty());
+    }
+}
