@@ -1,0 +1,22 @@
+import java.util.Arrays;
+
+public class twoPointer {
+    public static void main(String[] args) {
+        int arr[]={7,1,5,2,4};
+        Arrays.sort(arr);
+        int i=0;
+        int sum=8;
+        int count=0;
+        int j=arr.length-1;
+        while (j>i) {
+            if(arr[i]*arr[j]>sum || arr[i]*arr[j]==sum){
+                j--;
+                count=count+1;;
+            }
+            else if(arr[i]*arr[j]<sum){
+                i++;
+            }
+        }
+        System.out.println(count);
+    }
+}
